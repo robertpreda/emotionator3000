@@ -67,11 +67,6 @@ class MainWindow(QMainWindow):
         photo_action.triggered.connect(self.start_timer)
         camera_toolbar.addAction(photo_action)
 
-        photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'chart-icon.jpg')), "Emotions...", self)  # See emotions chart
-        photo_action.setStatusTip("See emotions chart.")
-        photo_action.triggered.connect(self.show_graph)
-        camera_toolbar.addAction(photo_action)
-
         photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'emotions-icon.jpg')), "Emotions example...", self)  # See emotions example
         photo_action.setStatusTip("See emotions example.")
         photo_action.triggered.connect(self.open_emotions_window)
