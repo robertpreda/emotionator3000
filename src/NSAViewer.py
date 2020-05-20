@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
         return
 
     def show_image(self):  # Load image from system
-        filename = QFileDialog.getOpenFileName(self, 'Open file', '../Snapshots/', "Image files (*.jpg *.gif)")
+        filename = QFileDialog.getOpenFileName(self, 'Open file', '../Snapshots/', "Image files (*.jpg *.png *.jpeg *.gif)")
         if filename[0] == "":  # Break from function if nothing is selected
             return
 
