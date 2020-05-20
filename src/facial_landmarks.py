@@ -4,7 +4,7 @@ import argparse
 import dlib
 import cv2
 import torch
-from src.utils import get_prediction
+from src.utils import get_prediction, get_squeezenet
 
 def rect_to_bb(rect):
 	global width_coef, height_coef
@@ -79,6 +79,7 @@ def init_facial_landmarks_detector():
 
 def init_emotions_detector():
 	global net, emotions
+	net = get_squeezenet(7)
 	net = torch.load("../models/squeezenet_512x512__epochs_200.pth")
 	emotions = {
 		0: 'Neutral',
