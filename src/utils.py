@@ -18,6 +18,7 @@ def get_resnet18(num_classes):
 
 def get_squeezenet(num_classes):
     backbone = models.squeezenet1_1(pretrained=True)
+    backbone.num_classes=num_classes
     backbone.classifier = nn.Sequential(
         nn.Dropout(p=0.5),
         nn.Conv2d(512, num_classes, kernel_size=1),
