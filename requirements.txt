@@ -1,5 +1,7 @@
-torch
-torchvision
+torch==1.4.0
+torchvision==0.5.0
+opencv-python
+imutils
 numpy
 dlib
-PyQt5
+PyQt5==5.12
