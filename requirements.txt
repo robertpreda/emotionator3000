@@ -1,4 +1,5 @@
 torch
 torchvision
-opencv-python
 numpy
+dlib
+PyQt5

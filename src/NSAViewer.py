@@ -8,8 +8,8 @@ from PyQt5 import QtGui
 
 import torch
 from torchvision import transforms
-from src.EmotionsWindow import EmotionsWindow
-from src.facial_landmarks import init_facial_landmarks_detector, init_emotions_detector, detect_landmarks
+from EmotionsWindow import EmotionsWindow
+from facial_landmarks import init_facial_landmarks_detector, init_emotions_detector, detect_landmarks
 
 import cv2
 import os
