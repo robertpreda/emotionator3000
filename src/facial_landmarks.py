@@ -4,7 +4,7 @@ import argparse
 import dlib
 import cv2
 import torch
-from src.utils import get_prediction, get_squeezenet
+from utils import get_prediction, get_squeezenet
 
 def rect_to_bb(rect):
 	global width_coef, height_coef
