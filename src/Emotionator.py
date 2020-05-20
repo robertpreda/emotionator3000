@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         self.status = QStatusBar()
         self.setStatusBar(self.status)
 
-        self.save_path = "../Snapshots/"  # Initial save path is in Snapshots folder
+        self.save_path = "Snapshots/"  # Initial save path is in Snapshots folder
         self.save_seq = 0
 
         self.currently_shown = "none"  # Neither an image or video is shown at first
@@ -42,12 +42,12 @@ class MainWindow(QMainWindow):
         self.camera.set(3, 768)  # Set camera width
         self.camera.set(4, 1024)  # Set camera height
 
-        photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'snapshot-icon.png')), "Take photo...", self)  # Snapshot button
+        photo_action = QAction(QIcon(os.path.join('Resources/Icons/', 'snapshot-icon.png')), "Take photo...", self)  # Snapshot button
         photo_action.setStatusTip("Snapshot!")
         photo_action.triggered.connect(self.take_photo)
         camera_toolbar.addAction(photo_action)
 
-        change_folder_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'folder-icon.png')), "Change save location...", self)  # Change snapshot save location
+        change_folder_action = QAction(QIcon(os.path.join('Resources/Icons/', 'folder-icon.png')), "Change save location...", self)  # Change snapshot save location
         change_folder_action.setStatusTip("Change the folder where snapshots are saved.")
         change_folder_action.triggered.connect(self.change_folder)
         camera_toolbar.addAction(change_folder_action)
@@ -57,17 +57,17 @@ class MainWindow(QMainWindow):
         camera_selector.currentIndexChanged.connect(self.select_camera)
         camera_toolbar.addWidget(camera_selector)
 
-        photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'load-image.png')), "Load image...", self)  # Load image from system
+        photo_action = QAction(QIcon(os.path.join('Resources/Icons/', 'load-image.png')), "Load image...", self)  # Load image from system
         photo_action.setStatusTip("Load image from system.")
         photo_action.triggered.connect(self.show_image)
         camera_toolbar.addAction(photo_action)
 
-        photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'video-icon.png')), "Live video...", self)  # Start live video
+        photo_action = QAction(QIcon(os.path.join('Resources/Icons/', 'video-icon.png')), "Live video...", self)  # Start live video
         photo_action.setStatusTip("Live video recognition.")
         photo_action.triggered.connect(self.start_timer)
         camera_toolbar.addAction(photo_action)
 
-        photo_action = QAction(QIcon(os.path.join('../Resources/Icons/', 'emotions-icon.jpg')), "Emotions example...", self)  # See emotions example
+        photo_action = QAction(QIcon(os.path.join('Resources/Icons/', 'emotions-icon.jpg')), "Emotions example...", self)  # See emotions example
         photo_action.setStatusTip("See emotions example.")
         photo_action.triggered.connect(self.open_emotions_window)
         camera_toolbar.addAction(photo_action)
@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
         return
 
     def show_image(self):  # Load image from system
-        filename = QFileDialog.getOpenFileName(self, 'Open file', '../Snapshots/', "Image files (*.jpg *.png *.jpeg *.gif)")
+        filename = QFileDialog.getOpenFileName(self, 'Open file', 'Snapshots/', "Image files (*.jpg *.png *.jpeg *.gif)")
         if filename[0] == "":  # Break from function if nothing is selected
             return
 

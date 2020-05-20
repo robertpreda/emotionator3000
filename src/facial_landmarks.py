@@ -72,7 +72,7 @@ def init_facial_landmarks_detector():
 	device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 	detector = dlib.get_frontal_face_detector()
 
-	predictor = dlib.shape_predictor("../models/shape_predictor_68_face_landmarks.dat")
+	predictor = dlib.shape_predictor("models/shape_predictor_68_face_landmarks.dat")
 	width_coef = 1024 / 512
 	height_coef = 768 / 384
 
@@ -80,7 +80,7 @@ def init_facial_landmarks_detector():
 def init_emotions_detector():
 	global net, emotions
 	net = get_squeezenet(7)
-	net = torch.load("../models/squeezenet_512x512__epochs_200.pth")
+	net = torch.load("models/squeezenet_512x512__epochs_200.pth")
 	emotions = {
 		0: 'Neutral',
 		1: 'Happy',
