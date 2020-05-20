@@ -6,6 +6,8 @@ import torchvision.transforms as transforms
 
 from torch.nn.functional import softmax
 
+from backbones import SqueezeNet
+
 def get_resnet18(num_classes):
     new_layers = nn.Sequential(
         nn.Linear(1000, 256),
@@ -18,13 +20,14 @@ def get_resnet18(num_classes):
 
 def get_squeezenet(num_classes):
     backbone = models.squeezenet1_1(pretrained=True)
-    backbone.num_classes=num_classes
+    backbone.num_classes = num_classes
     backbone.classifier = nn.Sequential(
         nn.Dropout(p=0.5),
         nn.Conv2d(512, num_classes, kernel_size=1),
         nn.ReLU(inplace=True),
         nn.AvgPool2d(13)
     )
+    backbone.forward = lambda x: backbone.classifier(backbone.features(x)).view(x.size(0), 7)
     return backbone
 
 def get_prediction(network, input_data, device):
