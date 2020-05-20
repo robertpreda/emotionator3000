@@ -20,7 +20,7 @@ def get_squeezenet(num_classes):
     backbone = models.squeezenet1_1(pretrained=True)
     backbone.classifier = nn.Sequential(
         nn.Dropout(p=0.5),
-        nn.Conv2d(512, 7, kernel_size=1),
+        nn.Conv2d(512, num_classes, kernel_size=1),
         nn.ReLU(inplace=True),
         nn.AvgPool2d(13)
     )
@@ -28,10 +28,8 @@ def get_squeezenet(num_classes):
 
 def get_prediction(network, input_data, device):
     transform = transforms.Compose([
-        transforms.ToPILImage(),
-        transforms.Grayscale(num_output_channels=3),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ]
     )
     face_tensor = transform(input_data)
