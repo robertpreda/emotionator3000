@@ -23,7 +23,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Emotionator")
         self.resize(1024, 768)
         self.available_cameras = QCameraInfo.availableCameras()
+        print(f"Camera {self.available_cameras[0]} detected!")
         if not self.available_cameras:
+            print("No available cameras! Closing..")
             pass #quit
 
         self.status = QStatusBar()

@@ -1,2 +1,2 @@
 @echo off
-python3 ./src/Emotionator.py
+python src/Emotionator.py
