@@ -5,7 +5,6 @@ import torchvision.transforms as transforms
 
 from torch.nn.functional import softmax
 
-from backbones import SqueezeNet
 
 def get_resnet18(num_classes):
     new_layers = nn.Sequential(
@@ -36,9 +35,8 @@ def get_prediction(network, input_data, device):
         ]
     )
     face_tensor = transform(input_data)
-    face_tensor = face_tensor.view(1, 3, 165, 165).float().to(device)
+    face_tensor = face_tensor.view(1, 3, 512, 512).float().to(device)
     with torch.no_grad():
         result = network(face_tensor).float()
         result.to('cpu')
-
-    return softmax(result)
+    return softmax(result, dim=1)
