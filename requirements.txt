@@ -1,4 +1,5 @@
 opencv-python
+cmake
 imutils
 numpy
 dlib
