@@ -13,6 +13,7 @@ import cv2
 class EmotionsWindow(QMainWindow):
     def __init__(self, parent=None):
         super(EmotionsWindow, self).__init__(parent)
+        self.setWindowTitle("Emotions")
         self.resize(800, 600)
 
         self.status = QStatusBar()

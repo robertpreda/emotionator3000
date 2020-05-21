@@ -20,7 +20,7 @@ import time
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-
+        self.setWindowTitle("Emotionator")
         self.resize(1024, 768)
         self.available_cameras = QCameraInfo.availableCameras()
         if not self.available_cameras:
@@ -77,7 +77,6 @@ class MainWindow(QMainWindow):
         self.timer.setInterval(25)
         self.timer.timeout.connect(self.draw_camera)
 
-        self.setWindowTitle("NSAViewer")
         self.show()
 
     def open_emotions_window(self):
@@ -190,7 +189,7 @@ if __name__ == '__main__':
     init_emotions_detector()
 
     app = QApplication(sys.argv)
-    app.setApplicationName("NSAViewer")
-
+    app.setApplicationName("Emotionator")
+    app.setWindowIcon(QIcon("Resources/Icons/Doofenshmirtz_Portrait.png"))
     window = MainWindow()
     app.exec_()
